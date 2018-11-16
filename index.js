@@ -21,8 +21,17 @@ app.use(bodyParser.urlencoded({
 app.use(express.json());
 
 app.get('/',function(req , res){
-    res.render('');
+    res.render('titulo');
 });
+
+app.get('/titulo',function(req , res){
+    res.render('descripcion');
+});
+
+app.get('/titulo',function(req , res){
+    res.render('enlaces');
+});
+
 
 
 
