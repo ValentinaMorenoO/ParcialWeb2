@@ -1,13 +1,29 @@
-const engines = require('consolidate');
-const handlebars = require('handlebars');
-const bodyParser = require('body-parser');
+const express = require('express');
 const hbs = require('express-handlebars');
+const app = express();
 
-app.engine('hbs', engines.handlebars);
-app.set('views', './views');
-app.set('view engine', 'hbs');
+
 
 app.use(express.static('public'));
 
-var port = 3000;
+app.engine('handlebars', hbs());
 
+app.set('view engine', 'handlebars');
+
+
+var bodyParser = require('body-parser');
+
+app.use( bodyParser.json() );     
+app.use(bodyParser.urlencoded({     
+  extended: true
+}));
+
+app.use(express.json());
+
+app.get('/',function(req , res){
+    res.render('');
+});
+
+
+
+app.listen(3000);
